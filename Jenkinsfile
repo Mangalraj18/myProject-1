@@ -1,29 +1,13 @@
 pipeline {
-  agent { label 'linux' }
-  tools {
-    maven 'M3'
-  }
-  stages {
-    stage('checkout') {
-      steps {
-        git 'https://github.com/effectivejenkins/myProject.git'
-      }
+  agent { label 'windows' }
+stages
+  {
+    stage('Hello from github')
+    {
+    steps
+    {
+      echo "Hello world!"
     }
-    stage('Build') {
-      steps {
-        sh 'mvn clean compile'
-      }
-    }
-    stage('Test') {
-      steps {
-        sh 'mvn test'
-        junit '**/target/surefire-reports/TEST-*.xml'
-      }
-    }
-    stage('Package') {
-      steps {
-        sh 'mvn package'
-      }
     }
   }
 }
